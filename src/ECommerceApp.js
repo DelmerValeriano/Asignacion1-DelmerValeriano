@@ -1,7 +1,18 @@
 import React from 'react'
+import { Provider } from 'react-redux';
+
+
+import { AppRouter } from './routers/AppRouter';
+import { store } from './store/store';
 
 export const ECommerceApp = () => {
   return (
-    <h1>ECommerceApp</h1>
+    
+    <Provider store={store}>
+      <AppRouter/>
+
+    </Provider>
+
+
   )
 }
