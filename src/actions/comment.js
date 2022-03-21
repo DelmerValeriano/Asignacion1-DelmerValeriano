@@ -95,7 +95,7 @@ const putCalificacion = (category, idImg) => {
     const resp = await TraidaDatos(`api/comments/${category}/${idImg}`,{commentcalificacion},"PUT");
 
 
-  const body =  await resp.json();
+ 
     dispatch(ActualizarCalificaciones(commentcalificacion));
 
   };

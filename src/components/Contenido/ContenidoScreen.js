@@ -37,7 +37,7 @@ export const ContenidoScreen = () => {
       });
     }
     
-  }, [stateProducts]);
+  }, [stateProducts,calificacion]);
 
   const dispatch = useDispatch();
 
