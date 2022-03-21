@@ -53,6 +53,7 @@ export const Mice = () => {
           name="search"
           autoComplete="off"
           value={search}
+          maxLength="25"
           className="shadow appearance-none border rounded pr-64 py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>

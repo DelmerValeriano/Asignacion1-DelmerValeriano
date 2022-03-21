@@ -47,7 +47,7 @@ export const Monitors = () => {
     <div>
        <div className="ml-10 my-8 font-serif ">
         <h1 className="mb-4 text-5xl">MONITORS</h1>
-        <input placeholder="Search..." onChange={handleInputChange}  name="search" value={search} className="shadow appearance-none border rounded pr-64 py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" />
+        <input placeholder="Search..." onChange={handleInputChange} maxLength="25"  name="search" value={search} className="shadow appearance-none border rounded pr-64 py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" />
        
       </div>
 
