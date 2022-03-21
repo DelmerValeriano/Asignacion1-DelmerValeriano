@@ -6,10 +6,10 @@ import { facebookProvider, googleProvider } from "../firebase/firebase";
 
 export const startGoogleLogin=( )=> {
 
-    return (dispatch) =>{
+    return async (dispatch) =>{
         const auth = getAuth();
  
-        signInWithPopup(auth, googleProvider)
+       await signInWithPopup(auth, googleProvider)
             .then(({user}) =>{
                 dispatch(login(user.uid, user.displayName))
                 
@@ -20,10 +20,10 @@ export const startGoogleLogin=( )=> {
 
 export const startFacebookLogin=( )=> {
 
-    return (dispatch) =>{
+    return async(dispatch) =>{
         const auth = getAuth();
  
-        signInWithPopup(auth, facebookProvider)
+       await signInWithPopup(auth, facebookProvider)
             .then(({user}) =>{
                 dispatch(login(user.uid, user.displayName))
                 
