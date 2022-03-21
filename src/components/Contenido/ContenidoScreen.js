@@ -22,7 +22,8 @@ export const ContenidoScreen = () => {
   const { description, img, name, palabrasClave, category } =
     activeProduct;
 
-  const {calificacion} = useSelector(state => state.producto)
+  const {calificacion} = useSelector(state => state.producto);
+  console.log(calificacion)
 
   useEffect(() => {
     if (stateProducts?.activeproducts) {
@@ -36,7 +37,7 @@ export const ContenidoScreen = () => {
       });
     }
     
-  }, [stateProducts,calificacion]);
+  }, [stateProducts]);
 
   const dispatch = useDispatch();
 

@@ -7,6 +7,7 @@ const initialState = {
 };
 
 export const productosReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case types.Datos:
       return {
@@ -21,7 +22,9 @@ export const productosReducer = (state = initialState, action) => {
         calificacion: action.payload.calificacion
       };
       case types.Actualizar:
+       
         return {
+         
           ...state,
           calificacion: action.payload,
 

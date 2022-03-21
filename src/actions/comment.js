@@ -72,39 +72,37 @@ export const postComments = (
   };
 };
 
-const putCalificacion = (category, id) => {
+const putCalificacion = (category, idImg) => {
   return async (dispatch) => {
-    const commentImage = await TraidaDatos(`api/comments/${id}`, {}, "GET");
+    const commentImage = await TraidaDatos(`api/comments/${idImg}`, {}, "GET");
     const comment = await commentImage.json();
 
+  
     const { commentImg } = comment;
-
     const calificacion = commentImg.map(
       (qualify) => (qualify = qualify.qualify)
-    );
-    const count = calificacion.length;
-    let suma = 0;
+      );
+      const count = calificacion.length;
+      let suma = 0;
+      
+      for (let i = 0; i < count; i++) {
+        suma += calificacion[i];
+      }
+      
+      const commentcalificacion = Math.round(suma / count);
 
-    for (let i = 0; i < count; i++) {
-      suma += calificacion[i];
-    }
 
-    const commentcalificacion = Math.round(suma / count);
+    const resp = await TraidaDatos(`api/comments/${category}/${idImg}`,{commentcalificacion},"PUT");
 
-    const resp = await TraidaDatos(
-      `/api/comments/${category}/${id}`,
-      { commentcalificacion },
-      "PUT"
-    );
 
-    await resp.json();
+  const body =  await resp.json();
     dispatch(ActualizarCalificaciones(commentcalificacion));
 
   };
 };
 
-export const ActualizarCalificaciones=(qualify)=>({
+export const ActualizarCalificaciones=(commentcalificacion)=>({
   type: types.Actualizar,
-  payload:qualify
+  payload:commentcalificacion
 }
 )
