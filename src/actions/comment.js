@@ -92,7 +92,7 @@ const putCalificacion = (category, idImg) => {
       const commentcalificacion = Math.round(suma / count);
 
 
-    const resp = await TraidaDatos(`api/comments/${category}/${idImg}`,{commentcalificacion},"PUT");
+   await TraidaDatos(`api/comments/${category}/${idImg}`,{commentcalificacion},"PUT");
 
 
  
