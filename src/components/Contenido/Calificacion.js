@@ -44,47 +44,59 @@ export const Calificacion = () => {
     const IdUser = commentUser.map((userid) => (userid = userid.uid));
 
     if (cheking) {
-      let idComparar = "";
-      for (let i = 0; i < IdUser.length; i++) {
-        if (uid === IdUser[i]) {
-          idComparar = IdUser[i];
+      if (comment !=='' ) {
+        let idComparar = "";
+        for (let i = 0; i < IdUser.length; i++) {
+          if (uid === IdUser[i]) {
+            idComparar = IdUser[i];
+          }
         }
-      }
-
-      if (uid !== idComparar) {
-        setComments([
-          ...comments,
-          {
-            qualify: qualify,
-            comment: comment,
-            date: fecha,
-            user: displayName,
-          },
-        ]);
-
-        dispatch(
-          postComments(id, qualify, comment, fecha, displayName, uid, category)
-        );
-
-        reset();
-        setQualify(5);
-
-        Swal.fire({
-          icon: "success",
-          title: "Se agrego el comentario correctamente",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      } else {
+  
+        if (uid !== idComparar) {
+          setComments([
+            ...comments,
+            {
+              qualify: qualify,
+              comment: comment,
+              date: fecha,
+              user: displayName,
+            },
+          ]);
+  
+          dispatch(
+            postComments(id, qualify, comment, fecha, displayName, uid, category)
+          );
+  
+          reset();
+          setQualify(5);
+  
+          Swal.fire({
+            icon: "success",
+            title: "Se agrego el comentario correctamente",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "Ya no puedes calificar este producto",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+          setQualify(5);
+        }
+        
+      }else{
         Swal.fire({
           icon: "warning",
-          title: "Ya no puedes calificar este producto",
+          title: "Completa el campo",
           showConfirmButton: false,
           timer: 1500,
         });
-        reset();
-        setQualify(5);
+
       }
+     
     } else {
       Swal.fire({
         icon: "warning",
@@ -176,7 +188,7 @@ export const Calificacion = () => {
             className="shadow appearance-none border rounded pr-64 py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
             name="comment"
             autoComplete="off"
-            required
+            
             value={comment}
             onChange={handleInputChange}
           />

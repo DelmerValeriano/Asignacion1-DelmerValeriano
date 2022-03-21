@@ -53,6 +53,7 @@ const geteventos = (productos) => ({
 
 });
 
+
 export const DatoActivo =(activo)=>({
   
   type: types.datoActivo,

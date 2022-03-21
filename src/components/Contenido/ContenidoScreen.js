@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Calificacion } from "./Calificacion";
 import { useNavigate } from "react-router-dom";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { EliminarComment } from "../../actions/comment";
 const appland = require.context("../../imagenes", true);
 
 export const ContenidoScreen = () => {
   const navigate = useNavigate();
 
-  const stateProducts = useSelector((state) => state.producto,shallowEqual);
+  const stateProducts = useSelector((state) => state.producto);
 
   const [activeProduct, setActiveProduct] = useState({
     calificacion: 0,
@@ -36,7 +36,7 @@ export const ContenidoScreen = () => {
       });
     }
     
-  }, [stateProducts]);
+  }, [stateProducts,calificacion]);
 
   const dispatch = useDispatch();
 

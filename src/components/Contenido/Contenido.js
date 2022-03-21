@@ -17,7 +17,6 @@ export const Contenido = ({
 }) => {
   const dispatch = useDispatch();
 
-
   const handleactivo = () => {
     dispatch(
       DatoActivo({
@@ -32,6 +31,8 @@ export const Contenido = ({
     );
   
     dispatch(getCommentsImg(id));
+
+
   };
 
 
